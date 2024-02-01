@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lop hoc</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/teacher}">Teacher</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/lop_hoc}">Lop hoc</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/student}">Student</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="container-fluid text-center">
+        <h1>Lop hoc</h1>
+        <div class="m-2">
+            <a class="h3" th:href="@{/lop_hoc/new}">Them Lop Hoc</a>
+        </div>
+        <div th:if="${message}" class="alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div class="container-fluid">
+
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Id Lop</th>
+                <th>Ten Lop</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="lop_hoc : ${lop_hoc}">
+                <tr>
+                    <td>[[${lop_hoc.idLop}]]</td>
+                    <td>[[${lop_hoc.tenLop}]]</td>
+                    <td>
+                        <a class="btn btn-warning" th:href="@{'/lop_hoc/edit/' + ${lop_hoc.idLop}}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{'/lop_hoc/delete/' + ${lop_hoc.idLop}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
